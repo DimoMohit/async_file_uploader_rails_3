@@ -1,0 +1,20 @@
+<center style="padding: 10px;" class="row">
+	<%= form_for(:upload,:url =>"/upload", :remote => true,
+	 :multipart => true) do |f| %>
+		<div class="col-xs-12"><%= f.label :first_name %>
+		<%= f.text_field :first_name, :autofocus => true %></div>
+
+		<div class="col-xs-12"><%= f.label :last_name %>
+		<%= f.text_field :last_name, :required=> true %></div>
+
+		<div class="col-xs-12"><%= f.label :profile_pic %> <small> (.gif or .png or .jpg)</small>
+		<%= f.file_field :profile_pic,:class=>"btn btn-primary" %></div>
+
+		<div class="col-xs-12"><%= f.label :resume %> <small> (.pdf or .docx)</small>
+		<%= f.file_field :resume, :required=> true ,:class=>"btn btn-primary" %></div>
+
+		<div class="col-xs-12"><%= f.submit "Upload",
+		:onclick => "$(this.form).trigger('submit.rails')",
+		:class=>"btn btn-primary" %></div>
+	<% end %>
+</center>
